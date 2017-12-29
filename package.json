@@ -1,7 +1,7 @@
 {
   "name": "hugo-lunr-zh",
   "version": "1.0.0",
-  "description": "a lunr index generator script that support Chinese languange for hugo",
+  "description": "a lunr index generator for hugo with Chinese languange support",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
