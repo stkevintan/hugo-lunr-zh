@@ -1,4 +1,6 @@
-const lunr = require("./hugo-lunr-zh");
+#!/usr/bin/env node
+
+const lunr = require("../");
 
 const options = {};
 const args = process.argv.slice(2);
