@@ -1,6 +1,6 @@
 {
   "name": "hugo-lunr-zh",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description":
     "a lunr index generator for hugo with Chinese languange support",
   "main": "lib/index.js",

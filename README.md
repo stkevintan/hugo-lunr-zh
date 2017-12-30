@@ -2,7 +2,7 @@
 
 Generate lunr.js index file for hugo static site with Chinese support.
 
-## install
+## Install
 
 globally:
 
@@ -21,7 +21,7 @@ npm install -D hugo-lunr-zh
 your can use it in command line:
 
 ```bash
-hugo-lunr-zh  -o docs/lunr-index.json --matter-type yaml --matter-delims ---
+hugo-lunr-zh  -o docs/lunr.json --matter-delims --- --matter-type yaml
 ```
 
 or run it in file:
@@ -29,7 +29,7 @@ or run it in file:
 ```js
 const lunr = require("hugo-lunr-zh");
 lunr({
-  output: "docs/lunr-index.json"
+  output: "docs/index.json"
 }).then(() => {
   console.log("done");
 });
@@ -43,7 +43,7 @@ Following is the default options:
 {
   contextPath: "/posts",
   dir: "content/posts",
-  output: "index.json",
+  output: "public/index.json",
   matterType: "toml",
   matterDelims: "+++",
   skipDraft: true,
@@ -58,11 +58,11 @@ the context path of the `uri` link
 
 ### dir [-d]
 
-the directory of your posts. note: it can't search recursivly.
+the directory of your posts. note: it can't search recursively.
 
 ### output [-o]
 
-the output filename, eg: `your_publish_dir/index.json`
+the output filepath, eg: `your_publishDir/index.json`
 
 ### skipDraft [-s]
 
@@ -70,7 +70,7 @@ if skip the drafts?
 
 ### matterType [--matter-type]
 
-specify the type of front matter. default is `toml`
+specify the type of front matter. avaliable values: `toml`, `yaml`, `json`
 
 ### matterDelims [--matter-delims]
 
@@ -82,8 +82,8 @@ the accepted extensions , multi extensions should be separated by a comma, eg: `
 
 ### jiebaConf [--jieba]
 
-the nodejieba configuration, the conf object should be stringify. more info: https://github.com/yanyiwu/nodejieba
+the nodejieba configuration object, the object should be stringify. more info: <https://github.com/yanyiwu/nodejieba>
 
 ## Issues
 
-please submit your issues to `https://github.com/stkevintan/hugo-lunr-zh/issues`
+please submit your issues to <https://github.com/stkevintan/hugo-lunr-zh/issues>
