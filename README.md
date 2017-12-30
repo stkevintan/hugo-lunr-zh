@@ -35,9 +35,22 @@ lunr({
 });
 ```
 
+## Output Format
+
+```json
+[
+  {
+    "uri": "contextPath/pagename",
+    "oriTitle": "the original post title for display",
+    "title": "segmented post title, Chinese keywords are seperated by spaces",
+    "content": "segmented post content, Chinese keywords are seperated by spaces"
+  }
+]
+```
+
 ## Options
 
-Following is the default options:
+the default:
 
 ```js
 {
