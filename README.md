@@ -65,7 +65,7 @@ function isChineseChar(str) {
 [
   {
     uri: "contextPath/pagename",
-    tags: "",
+    tags: "the tags list",
     oriTitle: "the original post title for display",
     title: "segmented post title, Chinese keywords are seperated by spaces",
     content: "segmented post content, Chinese keywords are seperated by spaces"
