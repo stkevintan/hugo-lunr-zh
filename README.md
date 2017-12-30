@@ -35,17 +35,42 @@ lunr({
 });
 ```
 
+after generate the index file, you should do some tweak work to the lunr.js in the web browser side:
+
+```js
+// overwrite the lunr.trimmer function to avoid trimming the Chinese words
+lunr.trimmer = function(token) {
+  //check token is chinese then not replace
+  var str = typeof token === 'string' token: token.str;
+  if (isChineseChar(str)) {
+    return token;
+  }
+  str = str.replace(/^\W+/, "").replace(/\W+$/, "");
+
+  if(token.str) token.str = str;
+  else token = str;
+  
+  return token;
+};
+
+function isChineseChar(str) {
+  var reg = /[\u4E00-\u9FA5\uF900-\uFA2D]/;
+  return reg.test(str);
+}
+```
+
 ## Output Format
 
-```json
+```js
 [
   {
-    "uri": "contextPath/pagename",
-    "oriTitle": "the original post title for display",
-    "title": "segmented post title, Chinese keywords are seperated by spaces",
-    "content": "segmented post content, Chinese keywords are seperated by spaces"
+    uri: "contextPath/pagename",
+    tags: "",
+    oriTitle: "the original post title for display",
+    title: "segmented post title, Chinese keywords are seperated by spaces",
+    content: "segmented post content, Chinese keywords are seperated by spaces"
   }
-]
+];
 ```
 
 ## Options
