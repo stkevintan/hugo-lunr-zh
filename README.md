@@ -35,28 +35,16 @@ lunr({
 });
 ```
 
-after generate the index file, you should do some tweak work to the lunr.js in the web browser side:
+after generate the index file, you need do some tweak work to the lunr.js on the web browser side:
 
 ```js
 // overwrite the lunr.trimmer function to avoid trimming the Chinese words
 lunr.trimmer = function(token) {
-  //check token is chinese then not replace
-  var str = typeof token === 'string' token: token.str;
-  if (isChineseChar(str)) {
-    return token;
-  }
-  str = str.replace(/^\W+/, "").replace(/\W+$/, "");
-
-  if(token.str) token.str = str;
-  else token = str;
-  
+  var str = token.str;
+  if (/[\u4E00-\u9FA5\uF900-\uFA2D]/.test(str)) return token;
+  token.str = str.replace(/^\W+/, "").replace(/\W+$/, "");
   return token;
 };
-
-function isChineseChar(str) {
-  var reg = /[\u4E00-\u9FA5\uF900-\uFA2D]/;
-  return reg.test(str);
-}
 ```
 
 ## Output Format
