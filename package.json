@@ -1,7 +1,8 @@
 {
   "name": "hugo-lunr-zh",
   "version": "1.0.5",
-  "description": "a lunr index generator for hugo with Chinese languange support",
+  "description":
+    "a lunr index generator for hugo with Chinese languange support",
   "main": "lib/index.js",
   "bin": {
     "hugo-lunr-zh": "bin/cli.js"
@@ -13,10 +14,8 @@
     "type": "git",
     "url": "git+https://github.com/stkevintan/hugo-lunr-zh.git"
   },
-  "keywords": [
-    "hugo",
-    "lunr"
-  ],
+  "keywords": ["hugo", "lunr"],
+  "engines": { "node": ">=8.0.0" },
   "author": "Kevin Tan",
   "license": "MIT",
   "bugs": {
