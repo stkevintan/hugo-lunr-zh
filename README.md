@@ -35,16 +35,28 @@ lunr({
 });
 ```
 
-after generate the index file, you need do some tweak work to the lunr.js on the web browser side:
+after generating the index file, you need extend the lunr object with a new trimmer on the browser side:
 
 ```js
-// overwrite the lunr.trimmer function to avoid trimming the Chinese words
-lunr.trimmer = function(token) {
-  var str = token.str;
-  if (/[\u4E00-\u9FA5\uF900-\uFA2D]/.test(str)) return token;
-  token.str = str.replace(/^\W+/, "").replace(/\W+$/, "");
-  return token;
+lunr.zh = function() {
+  this.pipeline.reset();
+  this.pipeline.add(lunr.zh.trimmer, lunr.stopWordFilter, lunr.stemmer);
 };
+
+lunr.zh.trimmer = function(token) {
+  return token.update(str => {
+    if (/[\u4E00-\u9FA5\uF900-\uFA2D]/.test(str)) return str;
+    return str.replace(/^\W+/, "").replace(/\W+$/, "");
+  });
+};
+ 
+lunr.Pipeline.registerFunction(lunr.zh.trimmer, "trimmer-zh");
+ 
+//...
+const index = lunr(function() {
+  this.use(lunr.zh);
+  //...
+});
 ```
 
 ## Output Format
