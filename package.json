@@ -1,6 +1,6 @@
 {
   "name": "hugo-lunr-zh",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "a lunr index generator for hugo with Chinese languange support",
   "main": "lib/index.js",
   "bin": {
@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/stkevintan/hugo-lunr-zh#readme",
   "dependencies": {
+    "fs-readdir-recursive": "^1.1.0",
     "gray-matter": "^3.1.1",
     "mkdirp-promise": "^5.0.1",
     "nodejieba": "^2.2.5",
