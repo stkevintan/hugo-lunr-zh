@@ -8,6 +8,7 @@ const args = process.argv.slice(2);
 const params = {
   contextPath: "-c",
   dir: "-d",
+  recursive: "-r",
   output: "-o",
   matterType: "--matter-type",
   matterDelims: "--matter-delims",
@@ -23,6 +24,14 @@ for (let i = 0; i < args.length; i++) {
     options.skipDraft = v !== "false";
     // the value is not omit.
     if (v === "true" || v === "false") i++;
+    continue;
+  }
+  if (args[i] === params.recursive) {
+    // if -r is the last item in args, v should be undefined.
+    const r = args[i + 1];
+    options.recursive = r !== "false";
+    // the value is not omit.
+    if (r === "true" || r === "false") i++;
     continue;
   }
   for (let key in params) {

@@ -81,6 +81,7 @@ the default:
 {
   contextPath: "/posts",
   dir: "content/posts",
+  recursive: false,
   output: "public/index.json",
   matterType: "toml",
   matterDelims: "+++",
@@ -96,7 +97,11 @@ the context path of the `uri` link
 
 ### dir [-d]
 
-the directory of your posts. note: it can't search recursively.
+the directory of your posts.
+
+### recursive [-r]
+
+Search recursively in the directory. avaliable values: true , false. Default 
 
 ### output [-o]
 
